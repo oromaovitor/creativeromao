@@ -316,7 +316,7 @@ main{position:relative}
 
 /* PORTFÓLIO */
 .dark{background:var(--ink);color:var(--cream)}
-.work{padding-block:clamp(72px,10vw,140px)}
+.work{padding-block:clamp(72px,10vw,140px);border-top:1px solid var(--line-dark)}
 .work__head{display:grid;gap:16px;margin-bottom:clamp(44px,7vw,90px)}
 .work__head .lead{max-width:48ch}
 .case{display:grid;gap:34px;align-items:center;padding-block:clamp(30px,5vw,60px);border-top:1px solid var(--line-dark)}
@@ -405,7 +405,64 @@ main{position:relative}
 .slot p{color:var(--muted-dark);font-size:.95rem}
 .slot a{font-stretch:112%;font-weight:700;text-decoration:none;color:#E0473F;display:inline-flex;gap:8px;align-items:center;min-height:44px}
 @media (hover:hover){.slot:hover{border-color:var(--red-hot);background:rgba(200,21,15,.06)}}
-@media (min-width:760px){.slots{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:760px){.slots{grid-template-columns:1fr}.slot{grid-template-columns:auto minmax(0,1fr) minmax(0,1.2fr) auto;align-items:center;gap:28px;padding:28px 32px}}
+
+/* conceitos */
+.case__concept{margin-top:16px;font-size:.84rem;color:var(--muted-dark);border-left:2px solid var(--line-dark);padding-left:12px;max-width:44ch}
+.case__live--concept{background:var(--cream);color:var(--ink)}
+/* Rafael: grafite e petróleo */
+.mini--raf{background:#121518;color:#E9ECEE;font-family:var(--sans)}
+.mini--raf .mnav{color:#E9ECEE}
+.mini--raf .pill{font-size:.9em;letter-spacing:0;text-transform:none;background:#37A3AD;color:#121518;padding:.3em .9em;border-radius:99px}
+.mini--raf .mhero{background:radial-gradient(90% 80% at 85% 30%,#1F6670 0,#121518 70%)}
+.mini--raf .mh{font-stretch:70%;font-weight:800;text-transform:uppercase;font-size:2.3em;line-height:.95;max-width:9em}
+.mini--raf .mh span{color:#37A3AD}
+.mini--raf .msub{color:#37A3AD}
+.mini--raf .mbtn{background:#37A3AD;color:#121518}
+.mini--raf .arch{position:absolute;right:7%;bottom:0;width:26%;aspect-ratio:3/4;border-radius:999px 999px 0 0;background:linear-gradient(#242B30,#1A1F23);border:1px solid rgba(55,163,173,.4)}
+.mphone .mini--raf .arch{display:none}
+.mini--raf .mt{font-stretch:70%;font-weight:800;text-transform:uppercase}
+.mini--raf .body{position:relative;height:6em;border-radius:.5em;background:#1A1F23;margin-top:.6em}
+.mini--raf .body i{position:absolute;width:.8em;height:.8em;border-radius:50%;background:#37A3AD;box-shadow:0 0 0 .35em rgba(55,163,173,.25)}
+.mini--raf .body i:nth-child(1){left:30%;top:18%}.mini--raf .body i:nth-child(2){left:62%;top:40%}.mini--raf .body i:nth-child(3){left:44%;top:66%}.mini--raf .body i:nth-child(4){left:20%;top:78%}
+.mini--raf .mcards i{background:#1A1F23;border:1px solid rgba(255,255,255,.1)}
+.mini--raf .alt{background:#F4F1EC;color:#1B2024}
+.mini--raf .mfoot{background:#0B0D0F;color:#9AA4AA}
+/* Helena: creme, cacau e terracota */
+.mini--hel{background:#F7F2EC;color:#3A2A24}
+.mini--hel .pill{font-family:var(--sans);font-size:.9em;letter-spacing:0;text-transform:none;background:#3A2A24;color:#F7F2EC;padding:.3em .9em;border-radius:99px}
+.mini--hel .mhero{background:linear-gradient(160deg,#F7F2EC,#F1E7DE)}
+.mini--hel .mh{font-size:2em;line-height:1.05;max-width:8em}
+.mini--hel .mh em{color:#A85F47}
+.mini--hel .msub{color:#A85F47}
+.mini--hel .mbtn{background:#3A2A24;color:#F7F2EC}
+.mini--hel .arch{position:absolute;right:7%;top:14%;width:28%;aspect-ratio:3/4.2;border-radius:999px 999px .6em .6em;background:linear-gradient(170deg,#E7D3C6,#C99583)}
+.mphone .mini--hel .arch{display:none}
+.mini--hel .layers{display:grid;gap:.3em;margin-top:.6em}
+.mini--hel .layers i{height:1.1em;border-radius:.6em;background:#E7D3C6}
+.mini--hel .layers i:nth-child(2){background:#C99583}.mini--hel .layers i:nth-child(3){background:#A85F47}
+.mini--hel .alt{background:#F1E7DE}
+.mini--hel .tabs{display:flex;gap:.4em;margin:.4em 0 .6em}
+.mini--hel .tabs i{font-style:normal;font-family:var(--sans);font-size:.6em;font-weight:700;padding:.4em .9em;border-radius:99px;border:1px solid rgba(58,42,36,.25)}
+.mini--hel .tabs i:first-child{background:#3A2A24;color:#F7F2EC;border-color:#3A2A24}
+.mini--hel .mgrid i{background:#E7D3C6;border-radius:.3em}.mini--hel .mgrid i:nth-child(even){background:#C99583}
+.mini--hel .mfoot{background:#3A2A24;color:#E7D3C6}
+
+/* carrossel de cases no celular */
+.cases__nav{display:none}
+@media (max-width:899px){
+  .cases{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--gut)) calc(-1 * var(--gut-r));padding-inline:var(--gut) var(--gut-r);scroll-padding-inline:var(--gut);scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .cases::-webkit-scrollbar{display:none}
+  .cases .case{flex:0 0 86%;scroll-snap-align:start;border:1px solid var(--line-dark);border-radius:14px;padding:22px 16px 24px;gap:22px;align-content:start;background:var(--ink-2)}
+  .cases .case .devices{order:-1;padding:10px 8% 8% 0}
+  .cases .case__title{font-size:1.6rem}
+  .cases .case__list li{font-size:.92rem}
+  .cases__nav{display:flex;align-items:center;gap:14px;margin-top:18px;font-size:.8rem;color:var(--muted-dark);font-weight:600}
+  .cases__count{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .cases__bar{flex:1;height:2px;background:var(--line-dark);position:relative;overflow:hidden;border-radius:2px}
+  .cases__bar i{position:absolute;inset:0;background:var(--red-hot);transform-origin:left;transform:scaleX(.25);transition:transform .25s var(--ease-out)}
+  .cases__hint{white-space:nowrap}
+}
 
 /* comparativo */
 .compare{padding-block:clamp(72px,10vw,130px)}
@@ -613,6 +670,190 @@ main{position:relative}
     </div>
   </section>
 
+  <!-- PORTFÓLIO -->
+  <section class="work dark" id="projetos" data-mark>
+    <div class="wrap">
+      <div class="work__head rv">
+        <p class="eyebrow">Portfólio</p>
+        <h2 class="h2">Sites que <span class="red">trabalham</span> enquanto o cliente dorme.</h2>
+        <p class="lead">Clientes reais e projetos conceito, cada um com identidade própria. Clique e veja funcionando de verdade.</p>
+      </div>
+
+      <div class="cases" id="casesTrack">
+      <article class="case rv">
+        <div class="case__info">
+          <p class="case__num">CASE 01 · ADVOCACIA</p>
+          <h3 class="case__title">Pallomma Fonseca</h3>
+          <p class="case__area">Direito Previdenciário · atendimento on-line para todo o Brasil</p>
+          <ul class="case__list">
+            <li>Lupa interativa que revela pontos escondidos num extrato do INSS</li>
+            <li>Formulário que monta a mensagem do WhatsApp</li>
+            <li>Identidade bordô e rosé tirada do Instagram dela</li>
+          </ul>
+          <a class="btn btn--cream case__link" href="https://sitepallomafonseca.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="devices">
+          <div class="devices__inner">
+            <span class="case__live"><i></i>No ar</span>
+            <div class="laptop">
+              <div class="laptop__screen"><div class="laptop__view">
+                <div class="track mini mini--pal" aria-hidden="true">
+                  <div class="mnav"><span>Pallomma Fonseca</span><i></i></div>
+                  <div class="mhero"><div class="diamond"><b>P</b></div><div class="mh">Direito<br>Previdenciário</div><div class="msub">On-line · todo o Brasil</div><div class="mbtn">Falar no WhatsApp</div></div>
+                  <div class="msec"><div class="mt">Áreas de atuação</div><div class="bar s"></div><div class="mcards"><i></i><i></i><i></i></div></div>
+                  <div class="msec alt"><div class="mt">Seu extrato pode esconder direitos</div><div class="doc"><div class="bar"></div><div class="bar s"></div><div class="bar"></div><div class="bar xs"></div><div class="bar s"></div><span class="lens"></span></div></div>
+                  <div class="msec"><div class="mt">Instagram</div><div class="mgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
+                </div>
+              </div></div>
+              <div class="laptop__base"></div>
+            </div>
+            <div class="mphone"><div class="mphone__view">
+              <div class="track mini mini--pal" aria-hidden="true" style="animation-delay:-3s">
+                <div class="mnav"><span>P. Fonseca</span><i></i></div>
+                <div class="mhero"><div class="diamond"><b>P</b></div><div class="mh">Direito Previdenciário</div><div class="msub">On-line</div><div class="mbtn">WhatsApp</div></div>
+                <div class="msec"><div class="mt">Áreas</div><div class="mcards"><i></i><i></i><i></i></div></div>
+                <div class="msec alt"><div class="mt">Extrato</div><div class="doc"><div class="bar"></div><div class="bar s"></div><div class="bar xs"></div><span class="lens"></span></div></div>
+                <div class="mfoot">Creative Romão</div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case rv">
+        <div class="case__info">
+          <p class="case__num">CASE 02 · ADVOCACIA</p>
+          <h3 class="case__title">JJ Advogados Associados</h3>
+          <p class="case__area">Escritório dos irmãos Jean e Jonathan · Passa Vinte/MG e on-line</p>
+          <ul class="case__list">
+            <li>Abertura com o monograma JJ se desenhando</li>
+            <li>Uma seção para cada sócio, com foto dos dois juntos</li>
+            <li>O cliente escolhe com qual advogado quer falar no WhatsApp</li>
+          </ul>
+          <a class="btn btn--cream case__link" href="https://jjadvogadosassociados.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="devices">
+          <div class="devices__inner">
+            <span class="case__live"><i></i>No ar</span>
+            <div class="laptop">
+              <div class="laptop__screen"><div class="laptop__view">
+                <div class="track mini mini--jj" aria-hidden="true">
+                  <div class="mnav"><span>JJ Advogados Associados</span><i></i></div>
+                  <div class="mhero"><div class="jj">JJ</div><div class="msub">Advogados Associados</div><div class="mbtn">Escolher advogado</div></div>
+                  <div class="msec"><div class="mt">Os sócios</div><div class="duo"><i></i><i></i></div></div>
+                  <div class="msec"><div class="quote"><div class="bar"></div><div class="bar s"></div></div></div>
+                  <div class="msec"><div class="mt">Áreas</div><div class="mcards"><i></i><i></i><i></i></div></div>
+                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
+                </div>
+              </div></div>
+              <div class="laptop__base"></div>
+            </div>
+            <div class="mphone"><div class="mphone__view">
+              <div class="track mini mini--jj" aria-hidden="true" style="animation-delay:-4s">
+                <div class="mnav"><span>JJ</span><i></i></div>
+                <div class="mhero"><div class="jj">JJ</div><div class="msub">Advogados</div><div class="mbtn">WhatsApp</div></div>
+                <div class="msec"><div class="mt">Os sócios</div><div class="duo"><i></i><i></i></div></div>
+                <div class="msec"><div class="mcards"><i></i><i></i></div></div>
+                <div class="mfoot">Creative Romão</div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case rv">
+        <div class="case__info">
+          <p class="case__num">CASE 03 · SAÚDE · PROJETO CONCEITO</p>
+          <h3 class="case__title">Dr. Rafael Moretti</h3>
+          <p class="case__area">Ortopedia do joelho e do esporte · Rio de Janeiro</p>
+          <ul class="case__list">
+            <li>Mapa do corpo: o paciente toca onde dói e vê o que pode ser</li>
+            <li>Anatomia do joelho explicada peça por peça</li>
+            <li>Cards por esporte e plano do primeiro passo ao retorno</li>
+          </ul>
+          <p class="case__concept">Projeto conceito: médico e dados fictícios, criado como estudo de design para a área da saúde.</p>
+          <a class="btn btn--cream case__link" href="https://siteapresentacaodr.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="devices">
+          <div class="devices__inner">
+            <span class="case__live case__live--concept">Conceito</span>
+            <div class="laptop">
+              <div class="laptop__screen"><div class="laptop__view">
+                <div class="track mini mini--raf" aria-hidden="true">
+                  <div class="mnav"><span>Dr. Rafael Moretti</span><b class="pill">Agendar</b></div>
+                  <div class="mhero"><div class="msub">Ortopedista · Rio de Janeiro</div><div class="mh">Volte a se mover <span>sem medo</span> da dor.</div><div class="mbtn">Agendar avaliação</div><span class="arch"></span></div>
+                  <div class="msec"><div class="mt">Onde dói?</div><div class="body"><i></i><i></i><i></i><i></i></div></div>
+                  <div class="msec"><div class="mt">Do seu esporte</div><div class="mcards"><i></i><i></i><i></i></div></div>
+                  <div class="msec alt"><div class="mt">O que eu trato</div><div class="bar"></div><div class="bar s"></div><div class="bar xs"></div></div>
+                  <div class="mfoot">Projeto conceito · Creative Romão</div>
+                </div>
+              </div></div>
+              <div class="laptop__base"></div>
+            </div>
+            <div class="mphone"><div class="mphone__view">
+              <div class="track mini mini--raf" aria-hidden="true" style="animation-delay:-5s">
+                <div class="mnav"><span>R. Moretti</span><i></i></div>
+                <div class="mhero"><div class="msub">Ortopedista</div><div class="mh">Volte a se mover <span>sem medo</span>.</div><div class="mbtn">Agendar</div><span class="arch"></span></div>
+                <div class="msec"><div class="mt">Onde dói?</div><div class="body"><i></i><i></i><i></i><i></i></div></div>
+                <div class="msec alt"><div class="mt">Tratamentos</div><div class="bar"></div><div class="bar s"></div></div>
+                <div class="mfoot">Creative Romão</div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case rv">
+        <div class="case__info">
+          <p class="case__num">CASE 04 · SAÚDE · PROJETO CONCEITO</p>
+          <h3 class="case__title">Dra. Helena Vasconcelos</h3>
+          <p class="case__area">Dermatologia clínica e estética · São Paulo</p>
+          <ul class="case__list">
+            <li>As camadas da pele explicadas de um jeito simples</li>
+            <li>Cuidados por fase da vida: 20 e poucos, 30+, 40+ e 50+</li>
+            <li>Rotina de manhã e de noite, galeria do consultório e WhatsApp por procedimento</li>
+          </ul>
+          <p class="case__concept">Projeto conceito: médica e dados fictícios, criado como estudo de design para a área da saúde.</p>
+          <a class="btn btn--cream case__link" href="https://siteapresentacaodra.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <div class="devices">
+          <div class="devices__inner">
+            <span class="case__live case__live--concept">Conceito</span>
+            <div class="laptop">
+              <div class="laptop__screen"><div class="laptop__view">
+                <div class="track mini mini--hel" aria-hidden="true">
+                  <div class="mnav"><span>Dra. Helena Vasconcelos</span><b class="pill">Agendar</b></div>
+                  <div class="mhero"><div class="msub">Dermatologia · São Paulo</div><div class="mh">Sua pele merece um <em>olhar sem pressa.</em></div><div class="mbtn">Agendar minha consulta</div><span class="arch"></span></div>
+                  <div class="msec"><div class="mt">Três camadas, um só cuidado.</div><div class="layers"><i></i><i></i><i></i></div></div>
+                  <div class="msec alt"><div class="mt">Cada idade, um cuidado.</div><div class="tabs"><i>20+</i><i>30+</i><i>40+</i><i>50+</i></div><div class="bar"></div><div class="bar s"></div></div>
+                  <div class="msec"><div class="mt">Um lugar para desacelerar.</div><div class="mgrid"><i></i><i></i><i></i><i></i></div></div>
+                  <div class="mfoot">Projeto conceito · Creative Romão</div>
+                </div>
+              </div></div>
+              <div class="laptop__base"></div>
+            </div>
+            <div class="mphone"><div class="mphone__view">
+              <div class="track mini mini--hel" aria-hidden="true" style="animation-delay:-2s">
+                <div class="mnav"><span>Dra. Helena</span><i></i></div>
+                <div class="mhero"><div class="msub">Dermatologia</div><div class="mh">Sua pele merece um <em>olhar sem pressa.</em></div><div class="mbtn">Agendar</div><span class="arch"></span></div>
+                <div class="msec"><div class="mt">Camadas</div><div class="layers"><i></i><i></i><i></i></div></div>
+                <div class="msec alt"><div class="mt">Fases</div><div class="tabs"><i>20+</i><i>30+</i></div></div>
+                <div class="mfoot">Creative Romão</div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </article>
+      </div>
+      <div class="cases__nav" aria-hidden="true"><span class="cases__count" id="casesCount">1 / 4</span><span class="cases__bar"><i id="casesBar"></i></span><span class="cases__hint">Arraste para o lado →</span></div>
+
+      <div class="slots">
+        <div class="slot rv"><p class="slot__num">CASE 05</p><h3>Esse espaço pode ser o seu.</h3><p>O próximo site no ar pode ter o seu nome aqui. Saúde, direito, beleza, comércio ou serviços.</p><a data-wa="vaga" href="#" target="_blank" rel="noopener">Quero ser o próximo case <span class="arrow" aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+
   <!-- REVELAR -->
   <section class="reveal" id="veja" data-mark>
     <div class="wrap">
@@ -708,105 +949,6 @@ main{position:relative}
         <div class="seal rv"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 22a6 6 0 0 1 1-11.9A8 8 0 0 1 24 9a6 6 0 0 1 0 13z"/><path d="m12 17 3 3 5-6"/></svg><b>Hospedagem inclusa</b><span>Nada pra contratar à parte.</span></div>
         <div class="seal rv"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27 21 11M18 6l8 8M22 4l6 6-3 3-6-6z"/></svg><b>Design exclusivo</b><span>Nada de template repetido.</span></div>
         <div class="seal rv"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 29s-9-8-9-15a9 9 0 0 1 18 0c0 7-9 15-9 15z"/><circle cx="16" cy="14" r="3"/></svg><b>Atendo todo o Brasil</b><span>Tudo on-line, do oi à entrega.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFÓLIO -->
-  <section class="work dark" id="projetos" data-mark>
-    <div class="wrap">
-      <div class="work__head rv">
-        <p class="eyebrow">Portfólio</p>
-        <h2 class="h2">Sites que já estão <span class="red">no ar</span>, trabalhando enquanto o cliente dorme.</h2>
-        <p class="lead">Cada um com identidade própria. Clique e veja funcionando de verdade.</p>
-      </div>
-
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 01 · ADVOCACIA</p>
-          <h3 class="case__title">Pallomma Fonseca</h3>
-          <p class="case__area">Direito Previdenciário · atendimento on-line para todo o Brasil</p>
-          <ul class="case__list">
-            <li>Lupa interativa que revela pontos escondidos num extrato do INSS</li>
-            <li>Formulário que monta a mensagem do WhatsApp</li>
-            <li>Identidade bordô e rosé tirada do Instagram dela</li>
-          </ul>
-          <a class="btn btn--cream case__link" href="https://sitepallomafonseca.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live"><i></i>No ar</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--pal" aria-hidden="true">
-                  <div class="mnav"><span>Pallomma Fonseca</span><i></i></div>
-                  <div class="mhero"><div class="diamond"><b>P</b></div><div class="mh">Direito<br>Previdenciário</div><div class="msub">On-line · todo o Brasil</div><div class="mbtn">Falar no WhatsApp</div></div>
-                  <div class="msec"><div class="mt">Áreas de atuação</div><div class="bar s"></div><div class="mcards"><i></i><i></i><i></i></div></div>
-                  <div class="msec alt"><div class="mt">Seu extrato pode esconder direitos</div><div class="doc"><div class="bar"></div><div class="bar s"></div><div class="bar"></div><div class="bar xs"></div><div class="bar s"></div><span class="lens"></span></div></div>
-                  <div class="msec"><div class="mt">Instagram</div><div class="mgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--pal" aria-hidden="true" style="animation-delay:-3s">
-                <div class="mnav"><span>P. Fonseca</span><i></i></div>
-                <div class="mhero"><div class="diamond"><b>P</b></div><div class="mh">Direito Previdenciário</div><div class="msub">On-line</div><div class="mbtn">WhatsApp</div></div>
-                <div class="msec"><div class="mt">Áreas</div><div class="mcards"><i></i><i></i><i></i></div></div>
-                <div class="msec alt"><div class="mt">Extrato</div><div class="doc"><div class="bar"></div><div class="bar s"></div><div class="bar xs"></div><span class="lens"></span></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 02 · ADVOCACIA</p>
-          <h3 class="case__title">JJ Advogados Associados</h3>
-          <p class="case__area">Escritório dos irmãos Jean e Jonathan · Passa Vinte/MG e on-line</p>
-          <ul class="case__list">
-            <li>Abertura com o monograma JJ se desenhando</li>
-            <li>Uma seção para cada sócio, com foto dos dois juntos</li>
-            <li>O cliente escolhe com qual advogado quer falar no WhatsApp</li>
-          </ul>
-          <a class="btn btn--cream case__link" href="https://jjadvogadosassociados.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live"><i></i>No ar</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--jj" aria-hidden="true">
-                  <div class="mnav"><span>JJ Advogados Associados</span><i></i></div>
-                  <div class="mhero"><div class="jj">JJ</div><div class="msub">Advogados Associados</div><div class="mbtn">Escolher advogado</div></div>
-                  <div class="msec"><div class="mt">Os sócios</div><div class="duo"><i></i><i></i></div></div>
-                  <div class="msec"><div class="quote"><div class="bar"></div><div class="bar s"></div></div></div>
-                  <div class="msec"><div class="mt">Áreas</div><div class="mcards"><i></i><i></i><i></i></div></div>
-                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--jj" aria-hidden="true" style="animation-delay:-4s">
-                <div class="mnav"><span>JJ</span><i></i></div>
-                <div class="mhero"><div class="jj">JJ</div><div class="msub">Advogados</div><div class="mbtn">WhatsApp</div></div>
-                <div class="msec"><div class="mt">Os sócios</div><div class="duo"><i></i><i></i></div></div>
-                <div class="msec"><div class="mcards"><i></i><i></i></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-
-      <div class="slots">
-        <div class="slot rv"><p class="slot__num">CASE 03</p><h3>Esse espaço pode ser o seu.</h3><p>O próximo site no ar pode ter o seu nome aqui.</p><a data-wa="vaga" href="#" target="_blank" rel="noopener">Quero ser o próximo case <span class="arrow" aria-hidden="true">→</span></a></div>
-        <div class="slot rv"><p class="slot__num">CASE 04</p><h3>Seu concorrente ainda não reservou.</h3><p>Chegue primeiro e apareça antes dele.</p><a data-wa="vaga" href="#" target="_blank" rel="noopener">Reservar esse espaço <span class="arrow" aria-hidden="true">→</span></a></div>
-        <div class="slot rv"><p class="slot__num">CASE 05</p><h3>Vaga aberta para qualquer área.</h3><p>Saúde, direito, beleza, comércio, serviços.</p><a data-wa="vaga" href="#" target="_blank" rel="noopener">Quero o meu site aqui <span class="arrow" aria-hidden="true">→</span></a></div>
       </div>
     </div>
   </section>
@@ -1051,6 +1193,9 @@ main{position:relative}
   if("ResizeObserver" in window){ var lastH=0; new ResizeObserver(function(){ if(Math.abs(main.offsetHeight-lastH)>40){lastH=main.offsetHeight;placeMarks();update();} }).observe(main); }
   placeMarks(); update();
 
+  /* ====== carrossel de cases no celular ====== */
+  var ct=document.getElementById("casesTrack"), cbar=document.getElementById("casesBar"), ccount=document.getElementById("casesCount");
+  if(ct){ var nC=ct.querySelectorAll(".case").length; ct.addEventListener("scroll",function(){ var max=ct.scrollWidth-ct.clientWidth; var p=max>0?ct.scrollLeft/max:0; var idx=Math.min(nC,Math.round(p*(nC-1))+1); cbar.style.transform="scaleX("+((idx)/nC)+")"; ccount.textContent=idx+" / "+nC; },{passive:true}); cbar.style.transform="scaleX("+(1/nC)+")"; ccount.textContent="1 / "+nC; }
   /* ====== revelar: linha que passa (Instagram -> site) ====== */
   var scr=document.getElementById("baScreen"), phone=document.getElementById("phone"), range=document.getElementById("baRange");
   var tagSite=document.getElementById("tagSite"), tagIg=document.getElementById("tagIg");
