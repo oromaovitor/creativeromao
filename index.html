@@ -631,41 +631,47 @@ html.intro-hold .hero *{animation-play-state:paused!important}
 .intro.out .itil{fill:var(--ink);transition:fill .3s}
 .intro.skip{transition:opacity .2s;opacity:0}
 
-/* ===================== VITRINE (modo cinema): celular 3D que viaja do topo e gira a cada site ===================== */
-.vit{--bg:#0D0C0B;--fg:#F7F5EE;--acc:#E0473F;--glow:#C8150F;--sub:rgba(247,245,238,.64);position:relative;background:var(--bg);color:var(--fg);transition:background-color .8s var(--ease-out),color .8s var(--ease-out)}
-.vit[data-theme=pal]{--bg:#4A1420;--fg:#F4EBE3;--acc:#D9B095;--glow:#A0343F;--sub:rgba(244,235,227,.72)}
-.vit[data-theme=jj]{--bg:#0C0C0E;--fg:#EDE6D6;--acc:#C9A45C;--glow:#C6A15B;--sub:rgba(237,230,214,.66)}
-.vit[data-theme=ana]{--bg:#130D11;--fg:#F6E9DF;--acc:#D683A9;--glow:#8E3D6B;--sub:rgba(246,233,223,.68)}
-.vit[data-theme=raf]{--bg:#10161A;--fg:#E9ECEE;--acc:#52B6BF;--glow:#1F6670;--sub:rgba(233,236,238,.66)}
-.vit[data-theme=hel]{--bg:#F4EDE6;--fg:#3A2A24;--acc:#8E4A35;--glow:#E2BBA6;--sub:rgba(58,42,36,.72)}
-.vit[data-theme=you]{--bg:#A8100E;--fg:#F7F5EE;--acc:#FFE3D6;--glow:#FF6A4A;--sub:rgba(247,245,238,.8)}
+/* ===================== PORTFÓLIO / VITRINE (modo cinema): celular 3D que viaja do topo e gira a cada site ===================== */
+@property --bg{syntax:"<color>";inherits:true;initial-value:#0D0C0B}
+@property --fg{syntax:"<color>";inherits:true;initial-value:#F7F5EE}
+@property --acc{syntax:"<color>";inherits:true;initial-value:#E0473F}
+@property --glow{syntax:"<color>";inherits:true;initial-value:#C8150F}
+.vit{--bg:#0D0C0B;--fg:#F7F5EE;--acc:#E0473F;--glow:#C8150F;--sub:rgba(247,245,238,.64);position:relative;overflow-x:clip;background:var(--bg);color:var(--fg);transition:--bg .8s var(--ease-out),--fg .8s var(--ease-out),--acc .8s var(--ease-out),--glow .8s var(--ease-out)}
+.vit[data-theme=pal]{--bg:#4A1420;--fg:#F4EBE3;--acc:#DDB79C;--glow:#A0343F;--sub:rgba(244,235,227,.74)}
+.vit[data-theme=jj]{--bg:#0C0C0E;--fg:#EDE6D6;--acc:#CBA65E;--glow:#B48C45;--sub:rgba(237,230,214,.68)}
+.vit[data-theme=ana]{--bg:#130D11;--fg:#F6E9DF;--acc:#DA8BB0;--glow:#8E3D6B;--sub:rgba(246,233,223,.7)}
+.vit[data-theme=raf]{--bg:#10161A;--fg:#E9ECEE;--acc:#5BBFC8;--glow:#1F6670;--sub:rgba(233,236,238,.68)}
+.vit[data-theme=hel]{--bg:#F4EDE6;--fg:#3A2A24;--acc:#8B4632;--glow:#E2BBA6;--sub:rgba(58,42,36,.74)}
+.vit[data-theme=you]{--bg:#A8100E;--fg:#F7F5EE;--acc:#FFE3D6;--glow:#FF6A4A;--sub:rgba(247,245,238,.84)}
 .vit__grid{position:relative;display:grid}
 .vit__stage{position:sticky;top:0;height:100svh;display:grid;place-items:center;pointer-events:none;z-index:2}
-.vit__glow{position:absolute;left:50%;top:50%;width:min(70vw,520px);aspect-ratio:1;margin:calc(min(70vw,520px) / -2) 0 0 calc(min(70vw,520px) / -2);border-radius:50%;background:var(--glow);opacity:.32;filter:blur(70px);transition:background-color .8s var(--ease-out)}
-.vtravel{position:relative;will-change:transform}
+.vit__glow{position:absolute;left:50%;top:50%;width:var(--gw,min(72vw,560px));aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--glow);opacity:.34;filter:blur(72px)}
+.vtravel{position:relative;will-change:transform;transition:opacity .6s var(--ease-out)}
 html.intro-on .vtravel{opacity:0}
-.vtravel{transition:opacity .6s var(--ease-out)}
 .vfloat{animation:vfloat 6s ease-in-out infinite}
 @keyframes vfloat{50%{transform:translateY(-10px)}}
-.vphone{--rx:6deg;--ry:-18deg;--turn:180deg;height:min(70svh,620px);aspect-ratio:9/19.5;perspective:1600px}
-.vbody{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--turn)));transition:transform .9s var(--ease-move)}
-.vface{position:absolute;inset:0;border-radius:15% / 6.9%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.vface--front{background:#060606;padding:3.6%;box-shadow:inset 0 0 0 2px #3c3834,inset 0 0 0 4px #111,0 50px 90px -34px rgba(0,0,0,.75)}
-.vscreen{position:relative;width:100%;height:100%;overflow:hidden;border-radius:12% / 5.5%;background:#000;container-type:size}
-.vshot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.04);transition:opacity .35s var(--ease-out),transform .9s var(--ease-out)}
+.vphone{--rx:6deg;--ry:-18deg;--turn:180deg;--ph:min(80svh,720px);height:var(--ph);aspect-ratio:9/19.5;perspective:1800px}
+.vbody{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(calc(var(--rx) + var(--my,0deg))) rotateY(calc(var(--ry) + var(--turn) + var(--mx,0deg)));transition:transform .9s var(--ease-move)}
+.vface{position:absolute;inset:0;border-radius:15.5% / 7.15%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.vface--front{background:#060606;padding:2.7%;box-shadow:inset 0 0 0 1.5px #4a4540,inset 0 0 0 3px #0b0b0b,0 50px 90px -34px rgba(0,0,0,.75)}
+.vscreen{--sb:#000;--sbfg:#fff;position:relative;width:100%;height:100%;overflow:hidden;border-radius:13% / 6%;background:var(--sb);container-type:size;transition:background-color .3s}
+.vsb{position:absolute;left:0;right:0;top:0;height:5.6%;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:0 7.5% 0 11%;background:var(--sb);color:var(--sbfg);transition:background-color .3s,color .3s;font-family:-apple-system,"SF Pro Text","Helvetica Neue",var(--sans);font-weight:600;font-size:4.1cqw;letter-spacing:-.01em}
+.vsb__i{display:flex;align-items:center;gap:1.4cqw}
+.vsb__i svg{height:2.7cqw;width:auto;fill:currentColor}
+.vsb__i svg:last-child{height:2.9cqw}
+.vshot{position:absolute;left:0;right:0;top:5.6%;width:100%;height:94.4%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.04);transition:opacity .35s var(--ease-out),transform .9s var(--ease-out)}
 .vshot.on{opacity:1;transform:none}
-.visland{position:absolute;left:50%;top:2.4%;width:31%;height:3.6%;margin-left:-15.5%;border-radius:99px;background:#000;z-index:3}
-.vglare{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 32%,rgba(255,255,255,0) 70%,rgba(255,255,255,.06) 100%)}
-.vface--back{transform:rotateY(180deg);background:linear-gradient(160deg,#25211e,#0D0C0B 60%);box-shadow:inset 0 0 0 2px #3c3834,0 50px 90px -34px rgba(0,0,0,.75);display:grid;place-items:center;overflow:hidden}
+.visland{position:absolute;left:50%;top:1.15%;width:30%;height:3.3%;transform:translateX(-50%);border-radius:99px;background:#000;z-index:4}
+.vglare{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,0) 72%,rgba(255,255,255,.05) 100%)}
+.vface--back{transform:rotateY(180deg);background:linear-gradient(160deg,#25211e,#0D0C0B 60%);box-shadow:inset 0 0 0 1.5px #4a4540,0 50px 90px -34px rgba(0,0,0,.75);display:grid;place-items:center;overflow:hidden}
 .vface--back img{width:58%;height:auto}
-.vface--back p{position:absolute;left:0;right:0;bottom:9%;text-align:center;font-stretch:125%;font-weight:700;font-size:clamp(.5rem,1.1vh,.7rem);letter-spacing:.18em;text-transform:uppercase;color:#E0473F}
+.vface--back p{position:absolute;left:0;right:0;bottom:9%;text-align:center;font-stretch:125%;font-weight:700;font-size:clamp(.45rem,1.1vh,.7rem);letter-spacing:.18em;text-transform:uppercase;color:#E0473F}
 .vcam{position:absolute;left:8%;top:4.5%;width:36%;aspect-ratio:1;border-radius:24%;background:#1a1816;box-shadow:inset 0 0 0 1.5px #3c3834}
 .vcam::before,.vcam::after{content:"";position:absolute;width:38%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#3b4a55,#06090b 60%);box-shadow:0 0 0 3px #2a2725}
 .vcam::before{left:9%;top:9%}.vcam::after{right:9%;bottom:9%}
-.vshadow{position:absolute;left:12%;right:12%;bottom:-7%;height:5%;border-radius:50%;background:rgba(0,0,0,.55);filter:blur(14px);z-index:-1}
-/* tela "seu site aqui" */
-.vshot--you{display:grid;align-content:start;gap:4cqh;padding:16cqh 9cqw 0;background:#F7F5EE;color:#0D0C0B;font-family:var(--sans)}
-.vshot--you .y-nav{position:absolute;left:0;right:0;top:7cqh;display:flex;justify-content:space-between;align-items:center;padding:0 7cqw;font-stretch:125%;font-weight:800;font-size:4.2cqw;letter-spacing:.06em}
+.vshadow{position:absolute;left:12%;right:12%;bottom:-6%;height:5%;border-radius:50%;background:rgba(0,0,0,.5);filter:blur(14px);z-index:-1}
+.vshot--you{display:grid;align-content:start;gap:4cqh;padding:12cqh 9cqw 0;background:#F7F5EE;color:#0D0C0B;font-family:var(--sans)}
+.vshot--you .y-nav{position:absolute;left:0;right:0;top:3cqh;display:flex;justify-content:space-between;align-items:center;padding:0 7cqw;font-stretch:125%;font-weight:800;font-size:4.2cqw;letter-spacing:.06em}
 .vshot--you .y-nav i{font-style:normal;background:#A8100E;color:#F7F5EE;padding:1.4cqw 3.4cqw;border-radius:99px;font-size:3.6cqw;letter-spacing:0}
 .vshot--you .y-eb{font-stretch:125%;font-weight:700;font-size:3.4cqw;letter-spacing:.16em;text-transform:uppercase;color:#A8100E}
 .vshot--you .y-h{font-stretch:125%;font-weight:900;font-size:12cqw;line-height:.95;letter-spacing:-.03em}
@@ -678,75 +684,76 @@ html.intro-on .vtravel{opacity:0}
 .vhead .eyebrow{color:var(--acc)}
 .vhead .h2{max-width:13ch}
 .vhead .h2 .red{color:var(--acc)}
-.vhead p.vlead{color:var(--sub);max-width:38ch;font-size:clamp(1rem,1.5vw,1.12rem)}
+.vlead{color:var(--sub);max-width:38ch;font-size:clamp(1rem,1.5vw,1.12rem)}
 .vhint{display:flex;align-items:center;gap:10px;font-size:.8rem;font-weight:600;color:var(--sub)}
 .vhint i{width:2px;height:26px;background:var(--acc);border-radius:2px;animation:vhint 1.6s var(--ease-out) infinite;transform-origin:top}
 @keyframes vhint{0%{transform:scaleY(0)}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.vstep__in{position:relative;display:flex;flex-direction:column;gap:inherit}
 .vstep{position:relative;opacity:.16;transition:opacity .5s var(--ease-out)}
 .vstep.on{opacity:1}
-.vstep__big{position:absolute;left:-.04em;top:50%;transform:translateY(-62%);font-stretch:125%;font-weight:900;font-size:clamp(9rem,22vw,17rem);line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--fg);opacity:.09;pointer-events:none;z-index:-1}
-.vstep__n{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-stretch:125%;font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+.vstep__big{position:absolute;left:-.04em;top:50%;transform:translateY(-62%);font-stretch:125%;font-weight:900;font-size:clamp(9rem,20vw,16rem);line-height:1;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--fg);opacity:.09;pointer-events:none;z-index:-1}
+.vstep__n{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-stretch:125%;font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
 .vtag{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:4px;border:1px solid currentColor;font-size:.64rem;letter-spacing:.12em}
 .vtag i{width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 1.4s infinite}
-.vstep h3{font-family:var(--display);font-stretch:125%;font-weight:900;letter-spacing:-.03em;font-size:clamp(2.1rem,5vw,4.1rem);line-height:.98;max-width:11ch}
-.vstep p.vdesc{color:var(--sub);max-width:36ch;font-size:clamp(.98rem,1.4vw,1.1rem)}
-.vstep h3,.vstep p.vdesc,.vstep .vlink{transform:translateY(18px);transition:transform .7s var(--ease-out)}
-.vstep.on h3,.vstep.on p.vdesc,.vstep.on .vlink{transform:none}
-.vstep.on p.vdesc{transition-delay:.06s}.vstep.on .vlink{transition-delay:.12s}
-.vlink{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid currentColor;color:var(--fg);text-decoration:none;font-stretch:112%;font-weight:700;font-size:.92rem;transition:background-color .2s,color .2s}
+.vstep h3{font-family:var(--display);font-stretch:125%;font-weight:900;letter-spacing:-.03em;font-size:clamp(2rem,4.2vw,3.6rem);line-height:.98;max-width:11ch;text-wrap:balance}
+.vdesc{color:var(--sub);max-width:38ch;font-size:clamp(.96rem,1.35vw,1.08rem)}
+.vlist{list-style:none;margin:2px 0 4px;padding:0;display:grid;gap:9px;max-width:42ch}
+.vlist li{display:flex;gap:12px;align-items:baseline;font-size:.95rem;line-height:1.45}
+.vlist li::before{content:"";flex:none;width:14px;height:2px;background:var(--acc);transform:translateY(-4px)}
+.vstep h3,.vdesc,.vlist,.vstep .vlink{transform:translateY(18px);transition:transform .7s var(--ease-out)}
+.vstep.on h3,.vstep.on .vdesc,.vstep.on .vlist,.vstep.on .vlink{transform:none}
+.vstep.on .vdesc{transition-delay:.05s}.vstep.on .vlist{transition-delay:.09s}.vstep.on .vlink{transition-delay:.13s}
+.vlink{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid currentColor;color:var(--fg);text-decoration:none;font-stretch:112%;font-weight:700;font-size:.92rem;transition:background-color .2s,color .2s;white-space:nowrap}
 .vlink--solid{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 @media (hover:hover){.vlink:hover{background:var(--fg);color:var(--bg)}.vlink--solid:hover{background:transparent;color:var(--fg)}}
-/* fino: os passos ficam do lado esquerdo e o celular preso à direita */
-@media (min-width:900px){
-  .vit__grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:48px}
-  .vit__steps{grid-column:1;grid-row:1}
-  .vit__stage{grid-column:2;grid-row:1;align-self:start}
-}
-/* celular: o celular fica preso no alto da tela e o texto de cada site aparece embaixo */
-@media (max-width:899px){
-  .vit__stage{place-items:start center;padding-top:calc(66px + 3svh)}
-  .vit__stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46svh;background:linear-gradient(to bottom,transparent,var(--bg) 42%);transition:background .8s}
-  .vit__glow{top:calc(66px + 3svh + min(44svh,calc(100svh - 400px)) / 2);width:90vw;margin:calc(90vw / -2) 0 0 calc(90vw / -2);filter:blur(50px)}
-  .vphone{height:min(44svh,calc(100svh - 400px))}
-  .vit__steps{margin-top:-100svh}
-  .vhead,.vstep{justify-content:flex-end;padding-block:0 9svh;min-height:92svh;gap:12px}
-  .vhead{min-height:100svh}
-  .vstep{opacity:0}
-  .vstep__big{top:auto;bottom:6svh;transform:none;font-size:9.5rem;opacity:.07}
-  .vstep h3{font-size:clamp(1.9rem,8.6vw,2.6rem)}
-  .vstep p.vdesc{font-size:.95rem}
-}
 .vcap{display:none}
-@media (max-width:899px){
-  .vit__steps{pointer-events:none}
-  .vhead,.vstep{visibility:hidden}
-  .vcap{display:block;position:absolute;left:var(--gut);right:var(--gut-r);bottom:calc(6svh + env(safe-area-inset-bottom,0px));z-index:4;pointer-events:auto;transition:opacity .28s var(--ease-out),transform .28s var(--ease-out)}
-  .vcap.swap{opacity:0;transform:translateY(12px)}
-  .vcap>div{min-height:0;padding:0;visibility:visible;opacity:1;display:flex;flex-direction:column;gap:12px}
-  .vcap h3,.vcap p.vdesc,.vcap .vlink{transform:none}
-  .vcap .h2{font-size:clamp(1.7rem,7.6vw,2.4rem)}
+/* duas colunas: computador, tablet deitado e celular deitado */
+@media (min-width:900px), (min-aspect-ratio:1/1){
+  .vit__grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:clamp(24px,4vw,64px)}
+  .vit__steps{grid-column:1;grid-row:1}
+  .vit__stage{grid-column:2;grid-row:1;align-self:start;padding-top:66px}
+  .vit__glow{top:calc(50% + 33px)}
+  .vphone{--ph:min(calc(100svh - 120px),760px)}
+  .vstep{display:block;padding:0}
+  .vstep__in{position:sticky;top:calc(50% + 33px);transform:translateY(-50%);gap:16px}
 }
-@media (prefers-reduced-motion:reduce){.vcap{transition:none}.vbody,.vshot,.vstep,.vstep h3,.vstep p.vdesc,.vstep .vlink{transition:none}.vfloat,.vhint i{animation:none}}
-/* vaga no topo para o celular pousar (só computador) */
+@media (min-width:900px), (min-aspect-ratio:1/1){ @media (max-height:600px){
+  .vhead{padding-block:90px 6svh;gap:10px}
+  .vstep{opacity:0}
+  .vdesc{font-size:.86rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .vstep h3{font-size:clamp(1.4rem,3.4vw,1.9rem)}
+  .vstep__in{gap:10px}
+  .vstep h3,.vhead .h2{font-size:clamp(1.5rem,3.6vw,2.2rem)}
+  .vlist,.vstep__big,.vhint{display:none}
+  .vphone{--ph:calc(100svh - 96px)}
+}}
+@media (min-width:900px), (min-aspect-ratio:1/1){ @media (max-height:420px){ .vdesc{display:none} .vstep__in{gap:9px} .vlink{min-height:42px} } }
+/* celular e tablet em pé: o aparelho fica preso no alto e a legenda de cada site aparece embaixo */
+@media (max-width:899px) and (max-aspect-ratio:999/1000){
+  .vit__stage{place-items:start center;padding-top:calc(66px + 2.5svh)}
+  .vphone{--ph:min(62svh,calc(100svh - 280px),640px)}
+  .vit__glow{--gw:92vw;top:calc(66px + 2.5svh + min(62svh,calc(100svh - 280px),640px) / 2);filter:blur(54px)}
+  .vit__steps{margin-top:-100svh;pointer-events:none}
+  .vhead,.vstep{visibility:hidden;min-height:86svh;padding-block:0}
+  .vhead{min-height:100svh}
+  .vcap{display:block;position:absolute;left:0;right:0;bottom:0;z-index:4;padding:96px calc(var(--gut-r) + 64px) calc(4.5svh + env(safe-area-inset-bottom,0px)) var(--gut);background:linear-gradient(to bottom,transparent 0,var(--bg) 92px);pointer-events:none}
+  .vcap .vstep__in{gap:10px}
+  .vcap__in{display:flex;flex-direction:column;gap:10px;pointer-events:auto;transition:opacity .26s var(--ease-out),transform .26s var(--ease-out)}
+  .vcap__in.swap{opacity:0;transform:translateY(12px)}
+  .vcap .vstep__n{font-size:.68rem}
+  .vcap h3{font-family:var(--display);font-stretch:125%;font-weight:900;letter-spacing:-.03em;font-size:clamp(1.65rem,7.4vw,2.6rem);line-height:1;text-wrap:balance}
+  .vcap .h2{font-size:clamp(1.65rem,7.4vw,2.6rem);max-width:14ch}
+  .vcap .vdesc{font-size:clamp(.9rem,3.7vw,1rem);line-height:1.5}
+  .vcap .vlist,.vcap .vhint{display:none}
+  .vcap .vlink{min-height:46px;font-size:.88rem;margin-top:2px}
+}
+@media (max-width:899px) and (max-aspect-ratio:999/1000){ @media (min-width:600px){ .vcap{padding-inline:max(40px,calc((100% - 560px) / 2))} .vcap .vlist{display:grid} } }
+@media (max-width:899px) and (max-aspect-ratio:999/1000){ @media (max-height:640px){ .vcap .vdesc,.vcap .vlead{display:none} .vphone{--ph:calc(100svh - 290px)} .vit__glow{top:calc(66px + 2.5svh + (100svh - 290px) / 2)} } }
+@media (prefers-reduced-motion:reduce){.vbody,.vshot,.vstep,.vstep h3,.vdesc,.vlist,.vstep .vlink,.vcap__in,.vit{transition:none}.vfloat,.vhint i{animation:none}}
+/* vaga na foto do topo para o celular pousar (só quando o topo está em duas colunas) */
 .hslot{display:none}
 @media (min-width:900px){.hslot{display:block;position:absolute;right:4%;bottom:-12%;width:25%;aspect-ratio:9/19.5;pointer-events:none}}
-
-/* mini-site da Ana: preto, ameixa e creme */
-.mini--ana{background:#0F0B0D;color:#F6E9DF}
-.mini--ana .mnav{color:#F6E9DF;font-family:Georgia,serif;letter-spacing:.02em;text-transform:none;font-weight:400;font-size:.8em}
-.mini--ana .mhero{padding-top:16%}
-.mini--ana .big{position:absolute;right:-2%;top:-6%;font-family:Georgia,serif;font-style:italic;font-size:7em;line-height:1;color:#8E3D6B;opacity:.9}
-.mini--ana .mh{position:relative;font-size:2.2em;line-height:1;max-width:7em}
-.mini--ana .mh em{background:linear-gradient(transparent 40%,#8E3D6B 40%,#8E3D6B 92%,transparent 92%);padding:0 .1em}
-.mini--ana .msub{position:relative;color:#9CC3C6}
-.mini--ana .mbtn{position:relative;background:#F6E9DF;color:#0F0B0D}
-.mini--ana .alt{background:#1A1216}
-.mini--ana .mcards i{background:#2A1C23;border:1px solid rgba(214,131,169,.25)}
-.mini--ana .mcards i:nth-child(2){background:#8E3D6B}
-.mini--ana .plate{display:grid;place-items:center;margin-top:.8em}
-.mini--ana .plate i{width:5.5em;aspect-ratio:1;border-radius:50%;background:conic-gradient(#8E3D6B 0 30%,#E9C9A8 0 55%,#9CC3C6 0 80%,#F6E9DF 0);box-shadow:0 0 0 .5em #2A1C23}
-.mini--ana .mgrid i{background:#2A1C23}.mini--ana .mgrid i:nth-child(3n){background:#8E3D6B}
-.mini--ana .mfoot{background:#000;color:#D683A9}
+.crow__b span{overflow-wrap:anywhere}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 </head>
@@ -804,72 +811,76 @@ html.intro-on .vtravel{opacity:0}
     </div>
   </section>
 
-  <!-- VITRINE: celular 3D que sai do topo, para aqui e gira a cada site -->
-  <section class="vit" id="vitrine" data-theme="ink" aria-labelledby="vitT" data-mark>
+  <!-- PROJETOS (vitrine): celular 3D que sai do topo, para aqui e gira a cada site -->
+  <section class="vit" id="projetos" data-theme="ink" aria-labelledby="vitT" data-mark>
     <div class="wrap vit__grid">
       <div class="vit__stage">
         <div class="vit__glow" aria-hidden="true"></div>
         <div class="vtravel" id="vtravel" aria-hidden="true"><div class="vfloat">
           <div class="vphone" id="vphone"><div class="vbody" id="vbody">
-            <div class="vface vface--front"><div class="vscreen"><img class="vshot" src="assets/tela-pallomma.webp" alt="" width="540" height="967" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-jj.webp" alt="" width="540" height="967" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-ana-nutri.webp" alt="" width="540" height="967" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-dr-rafael.webp" alt="" width="540" height="967" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-dra-helena.webp" alt="" width="540" height="967" loading="lazy" decoding="async"><div class="vshot vshot--you" aria-hidden="true"><div class="y-nav">SEU NOME<i>Agendar</i></div><p class="y-eb">Sua profissão · sua cidade</p><p class="y-h">Seu site <span>aqui.</span></p><div class="y-photo">sua foto</div><span class="y-btn">Chamar no WhatsApp</span></div><span class="visland"></span><span class="vglare"></span></div></div>
+            <div class="vface vface--front"><div class="vscreen" id="vscreen"><div class="vsb"><b>9:41</b><span class="vsb__i"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 5.6 9a3.4 3.4 0 0 1 4.8 0zM3.3 6.7a6.6 6.6 0 0 1 9.4 0l-1.6 1.6a4.4 4.4 0 0 0-6.2 0zM1 4.4a9.9 9.9 0 0 1 14 0l-1.6 1.6a7.6 7.6 0 0 0-10.8 0z"/></svg><svg viewBox="0 0 26 12"><rect x=".6" y=".6" width="22" height="10.8" rx="3" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".45"/><rect x="2.4" y="2.4" width="16" height="7.2" rx="1.6"/><rect x="23.8" y="4" width="1.6" height="4" rx=".8" opacity=".45"/></svg></span></div><img class="vshot" src="assets/tela-pallomma.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-jj.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-ana-nutri.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-dr-rafael.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><img class="vshot" src="assets/tela-dra-helena.webp" alt="" width="780" height="1688" loading="lazy" decoding="async"><div class="vshot vshot--you"><div class="y-nav">SEU NOME<i>Agendar</i></div><p class="y-eb">Sua profissão · sua cidade</p><p class="y-h">Seu site <span>aqui.</span></p><div class="y-photo">sua foto</div><span class="y-btn">Chamar no WhatsApp</span></div><span class="visland"></span><span class="vglare"></span></div></div>
             <div class="vface vface--back"><span class="vcam"></span><img src="assets/creative-romao-logo-claro.png" alt="" width="900" height="242"><p>Web Design Studio</p></div>
           </div><span class="vshadow"></span></div>
         </div></div>
-        <div class="vcap" id="vcap"></div>
+        <div class="vcap" id="vcap"><div class="vcap__in"></div></div>
       </div>
       <div class="vit__steps">
         <header class="vhead" data-step="-1" data-theme="ink">
-          <p class="eyebrow">Vitrine</p>
+          <p class="eyebrow">Portfólio</p>
           <h2 class="h2" id="vitT">Cinco sites. Cinco <span class="red">identidades.</span> Nenhum template.</h2>
-          <p class="vlead">Role a tela e veja cada um do jeito que o cliente deles vê: no celular.</p>
+          <p class="vlead">Clientes reais e projetos conceito. Role e veja cada um como aparece no celular de quem procura.</p>
           <p class="vhint"><i></i>Role para ver</p>
         </header>
-      <article class="vstep" data-step="0" data-theme="pal">
-        <span class="vstep__big" aria-hidden="true">01</span>
-        <p class="vstep__n">01 / 05 · Advocacia <span class="vtag"><i></i>No ar</span></p>
-        <h3>Pallomma Fonseca</h3>
-        <p class="vdesc">Direito previdenciário explicado com clareza. Bordô, rosé e caligrafia tirados do Instagram dela.</p>
-        <a class="vlink" href="https://sitepallomafonseca.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
-      </article>
-      <article class="vstep" data-step="1" data-theme="jj">
-        <span class="vstep__big" aria-hidden="true">02</span>
-        <p class="vstep__n">02 / 05 · Advocacia <span class="vtag"><i></i>No ar</span></p>
-        <h3>JJ Advogados</h3>
-        <p class="vdesc">Dois irmãos, um escritório. Preto e dourado, com o monograma JJ se desenhando na abertura.</p>
-        <a class="vlink" href="https://jjadvogadosassociados.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
-      </article>
-      <article class="vstep" data-step="2" data-theme="ana">
-        <span class="vstep__big" aria-hidden="true">03</span>
-        <p class="vstep__n">03 / 05 · Nutrição <span class="vtag"><i></i>No ar</span></p>
-        <h3>Ana Luiza Marques</h3>
-        <p class="vdesc">Nutrição sem terror nutricional. O nome dela gigante atrás da foto e a frase virando título.</p>
-        <a class="vlink" href="https://anamarquesnutricionista.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
-      </article>
-      <article class="vstep" data-step="3" data-theme="raf">
-        <span class="vstep__big" aria-hidden="true">04</span>
-        <p class="vstep__n">04 / 05 · Ortopedia <span class="vtag">Projeto conceito</span></p>
-        <h3>Dr. Rafael Moretti</h3>
-        <p class="vdesc">Joelho e esporte. Grafite e petróleo, com a palavra JOELHO enorme atrás do médico.</p>
-        <a class="vlink" href="https://siteapresentacaodr.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
-      </article>
-      <article class="vstep" data-step="4" data-theme="hel">
-        <span class="vstep__big" aria-hidden="true">05</span>
-        <p class="vstep__n">05 / 05 · Dermatologia <span class="vtag">Projeto conceito</span></p>
-        <h3>Dra. Helena Vasconcelos</h3>
-        <p class="vdesc">Sua pele merece um olhar sem pressa. Creme, cacau e terracota, com a foto em arco.</p>
-        <a class="vlink" href="https://siteapresentacaodra.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
-      </article>
-      <article class="vstep" data-step="5" data-theme="you">
-        <span class="vstep__big" aria-hidden="true">06</span>
-        <p class="vstep__n">06 · O próximo</p>
-        <h3>O seu pode ser o próximo.</h3>
-        <p class="vdesc">Saúde, direito, beleza, comércio ou serviços. Você vê a prévia antes de pagar.</p>
-        <a class="vlink vlink--solid" data-wa="vaga" href="#" target="_blank" rel="noopener">Quero o meu na vitrine <span aria-hidden="true">→</span></a>
-      </article>
+        <article class="vstep" data-step="0" data-theme="pal" data-sb="#490c15" data-sbfg="#FFFFFF"><div class="vstep__in">
+          <span class="vstep__big" aria-hidden="true">01</span>
+          <p class="vstep__n">01 / 05 · Advocacia <span class="vtag"><i></i>No ar</span></p>
+          <h3>Pallomma Fonseca</h3>
+          <p class="vdesc">Direito previdenciário explicado com clareza, em bordô e rosé tirados do Instagram dela.</p>
+          <ul class="vlist"><li>Lupa que revela pontos escondidos num extrato do INSS</li><li>Formulário que monta a mensagem do WhatsApp</li><li>Identidade bordô e rosé tirada do Instagram dela</li></ul>
+          <a class="vlink" href="https://sitepallomafonseca.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+        </div></article>
+        <article class="vstep" data-step="1" data-theme="jj" data-sb="#090a07" data-sbfg="#FFFFFF"><div class="vstep__in">
+          <span class="vstep__big" aria-hidden="true">02</span>
+          <p class="vstep__n">02 / 05 · Advocacia <span class="vtag"><i></i>No ar</span></p>
+          <h3>JJ Advogados</h3>
+          <p class="vdesc">Dois irmãos, um escritório. Preto e dourado, com o monograma JJ se desenhando na abertura.</p>
+          <ul class="vlist"><li>Abertura com o monograma JJ se desenhando</li><li>Uma seção para cada sócio, com foto dos dois juntos</li><li>O cliente escolhe com qual advogado quer falar no WhatsApp</li></ul>
+          <a class="vlink" href="https://jjadvogadosassociados.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+        </div></article>
+        <article class="vstep" data-step="2" data-theme="ana" data-sb="#131111" data-sbfg="#FFFFFF"><div class="vstep__in">
+          <span class="vstep__big" aria-hidden="true">03</span>
+          <p class="vstep__n">03 / 05 · Nutrição <span class="vtag"><i></i>No ar</span></p>
+          <h3>Ana Luiza Marques</h3>
+          <p class="vdesc">Nutrição sem terror nutricional: o nome dela gigante atrás da foto e a frase virando título.</p>
+          <ul class="vlist"><li>“Ana” gigante em caligrafia atrás da foto</li><li>A frase dela virou o título, com destaque em pincel</li><li>Consulta on-line e WhatsApp direto para agendar</li></ul>
+          <a class="vlink" href="https://anamarquesnutricionista.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+        </div></article>
+        <article class="vstep" data-step="3" data-theme="raf" data-sb="#dac6a6" data-sbfg="#0D0C0B"><div class="vstep__in">
+          <span class="vstep__big" aria-hidden="true">04</span>
+          <p class="vstep__n">04 / 05 · Ortopedia <span class="vtag">Projeto conceito</span></p>
+          <h3>Dr. Rafael Moretti</h3>
+          <p class="vdesc">Joelho e esporte, em grafite e petróleo. Médico e dados fictícios, criado como estudo de design.</p>
+          <ul class="vlist"><li>Mapa do corpo: o paciente toca onde dói e vê o que pode ser</li><li>Anatomia do joelho explicada peça por peça</li><li>Plano por esporte, do primeiro passo ao retorno</li></ul>
+          <a class="vlink" href="https://siteapresentacaodr.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+        </div></article>
+        <article class="vstep" data-step="4" data-theme="hel" data-sb="#392a23" data-sbfg="#FFFFFF"><div class="vstep__in">
+          <span class="vstep__big" aria-hidden="true">05</span>
+          <p class="vstep__n">05 / 05 · Dermatologia <span class="vtag">Projeto conceito</span></p>
+          <h3>Dra. Helena Vasconcelos</h3>
+          <p class="vdesc">Sua pele merece um olhar sem pressa. Médica e dados fictícios, criado como estudo de design.</p>
+          <ul class="vlist"><li>As camadas da pele explicadas de um jeito simples</li><li>Cuidados por fase da vida: 20+, 30+, 40+ e 50+</li><li>WhatsApp com mensagem para cada procedimento</li></ul>
+          <a class="vlink" href="https://siteapresentacaodra.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span aria-hidden="true">↗</span><span class="sr-only"> (abre em nova aba)</span></a>
+        </div></article>
+        <article class="vstep" data-step="5" data-theme="you" data-sb="#F7F5EE" data-sbfg="#0D0C0B"><div class="vstep__in">
+          <span class="vstep__big" aria-hidden="true">06</span>
+          <p class="vstep__n">06 · O próximo</p>
+          <h3>O seu pode ser o próximo.</h3>
+          <p class="vdesc">Saúde, direito, beleza, comércio ou serviços. Você vê a prévia antes de pagar.</p>
+          <a class="vlink vlink--solid" data-wa="vaga" href="#" target="_blank" rel="noopener">Quero o meu na vitrine <span aria-hidden="true">→</span></a>
+        </div></article>
       </div>
     </div>
   </section>
-
   <!-- RELÓGIO 24H -->
   <section class="clock dark" id="prazo" data-mark>
     <div class="wrap">
@@ -892,232 +903,6 @@ html.intro-on .vtravel{opacity:0}
         <div class="mstat rv"><div class="mstat__n"><span data-count="1">1</span><small> clique</small></div><p>do site até o seu WhatsApp</p></div>
         <div class="mstat rv"><div class="mstat__n"><span data-count="6">6</span><small> anos</small></div><p>trabalhando com internet</p></div>
         <div class="mstat rv"><div class="mstat__n"><span data-count="0" data-from="99">0</span><small> templates</small></div><p>cada site é feito do zero</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFÓLIO -->
-  <section class="work dark" id="projetos" data-mark>
-    <div class="wrap">
-      <div class="work__head rv">
-        <p class="eyebrow">Portfólio</p>
-        <h2 class="h2">Sites que <span class="red">trabalham</span> enquanto o cliente dorme.</h2>
-        <p class="lead">Clientes reais e projetos conceito, cada um com identidade própria. Clique e veja funcionando de verdade.</p>
-      </div>
-
-      <div class="cases" id="casesTrack">
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 01 · ADVOCACIA</p>
-          <h3 class="case__title">Pallomma Fonseca</h3>
-          <p class="case__area">Direito Previdenciário · atendimento on-line para todo o Brasil</p>
-          <ul class="case__list">
-            <li>Lupa interativa que revela pontos escondidos num extrato do INSS</li>
-            <li>Formulário que monta a mensagem do WhatsApp</li>
-            <li>Identidade bordô e rosé tirada do Instagram dela</li>
-          </ul>
-          <a class="btn btn--cream case__link" href="https://sitepallomafonseca.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live"><i></i>No ar</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--pal" aria-hidden="true">
-                  <div class="mnav"><span>Pallomma Fonseca</span><i></i></div>
-                  <div class="mhero"><div class="diamond"><b>P</b></div><div class="mh">Direito<br>Previdenciário</div><div class="msub">On-line · todo o Brasil</div><div class="mbtn">Falar no WhatsApp</div></div>
-                  <div class="msec"><div class="mt">Áreas de atuação</div><div class="bar s"></div><div class="mcards"><i></i><i></i><i></i></div></div>
-                  <div class="msec alt"><div class="mt">Seu extrato pode esconder direitos</div><div class="doc"><div class="bar"></div><div class="bar s"></div><div class="bar"></div><div class="bar xs"></div><div class="bar s"></div><span class="lens"></span></div></div>
-                  <div class="msec"><div class="mt">Instagram</div><div class="mgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--pal" aria-hidden="true" style="animation-delay:-3s">
-                <div class="mnav"><span>P. Fonseca</span><i></i></div>
-                <div class="mhero"><div class="diamond"><b>P</b></div><div class="mh">Direito Previdenciário</div><div class="msub">On-line</div><div class="mbtn">WhatsApp</div></div>
-                <div class="msec"><div class="mt">Áreas</div><div class="mcards"><i></i><i></i><i></i></div></div>
-                <div class="msec alt"><div class="mt">Extrato</div><div class="doc"><div class="bar"></div><div class="bar s"></div><div class="bar xs"></div><span class="lens"></span></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 02 · ADVOCACIA</p>
-          <h3 class="case__title">JJ Advogados Associados</h3>
-          <p class="case__area">Escritório dos irmãos Jean e Jonathan · Passa Vinte/MG e on-line</p>
-          <ul class="case__list">
-            <li>Abertura com o monograma JJ se desenhando</li>
-            <li>Uma seção para cada sócio, com foto dos dois juntos</li>
-            <li>O cliente escolhe com qual advogado quer falar no WhatsApp</li>
-          </ul>
-          <a class="btn btn--cream case__link" href="https://jjadvogadosassociados.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live"><i></i>No ar</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--jj" aria-hidden="true">
-                  <div class="mnav"><span>JJ Advogados Associados</span><i></i></div>
-                  <div class="mhero"><div class="jj">JJ</div><div class="msub">Advogados Associados</div><div class="mbtn">Escolher advogado</div></div>
-                  <div class="msec"><div class="mt">Os sócios</div><div class="duo"><i></i><i></i></div></div>
-                  <div class="msec"><div class="quote"><div class="bar"></div><div class="bar s"></div></div></div>
-                  <div class="msec"><div class="mt">Áreas</div><div class="mcards"><i></i><i></i><i></i></div></div>
-                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--jj" aria-hidden="true" style="animation-delay:-4s">
-                <div class="mnav"><span>JJ</span><i></i></div>
-                <div class="mhero"><div class="jj">JJ</div><div class="msub">Advogados</div><div class="mbtn">WhatsApp</div></div>
-                <div class="msec"><div class="mt">Os sócios</div><div class="duo"><i></i><i></i></div></div>
-                <div class="msec"><div class="mcards"><i></i><i></i></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 03 · SAÚDE · NUTRIÇÃO</p>
-          <h3 class="case__title">Ana Luiza Marques</h3>
-          <p class="case__area">Nutricionista · CRN 26103624 · on-line para todo o Brasil</p>
-          <ul class="case__list">
-            <li>O nome "Ana" gigante em caligrafia atrás da foto</li>
-            <li>A frase dela, "Nutrição sem terror nutricional", virou o título com destaque em pincel</li>
-            <li>Preto, ameixa e creme, com WhatsApp direto para agendar</li>
-          </ul>
-          <a class="btn btn--cream case__link" href="https://anamarquesnutricionista.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live"><i></i>No ar</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--ana" aria-hidden="true">
-                  <div class="mnav"><span>Ana Luiza Marques</span><i></i></div>
-                  <div class="mhero"><span class="big">Ana</span><div class="msub">Nutricionista · on-line</div><div class="mh">Nutrição sem <em>terror</em> nutricional.</div><div class="mbtn">Agendar minha consulta</div></div>
-                  <div class="msec alt"><div class="mt">Para quem é</div><div class="mcards"><i></i><i></i><i></i></div></div>
-                  <div class="msec"><div class="mt">Um prato possível, não perfeito.</div><div class="plate"><i></i></div></div>
-                  <div class="msec alt"><div class="mt">Instagram</div><div class="mgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-                  <div class="mfoot">Site desenvolvido por Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--ana" aria-hidden="true" style="animation-delay:-4s">
-                <div class="mnav"><span>Ana Marques</span><i></i></div>
-                <div class="mhero"><span class="big">Ana</span><div class="msub">Nutricionista</div><div class="mh">Nutrição sem <em>terror</em> nutricional.</div><div class="mbtn">Agendar</div></div>
-                <div class="msec"><div class="mt">Prato</div><div class="plate"><i></i></div></div>
-                <div class="msec alt"><div class="mt">Para quem é</div><div class="mcards"><i></i><i></i></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-
-
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 04 · SAÚDE · PROJETO CONCEITO</p>
-          <h3 class="case__title">Dr. Rafael Moretti</h3>
-          <p class="case__area">Ortopedia do joelho e do esporte · Rio de Janeiro</p>
-          <ul class="case__list">
-            <li>Mapa do corpo: o paciente toca onde dói e vê o que pode ser</li>
-            <li>Anatomia do joelho explicada peça por peça</li>
-            <li>Cards por esporte e plano do primeiro passo ao retorno</li>
-          </ul>
-          <p class="case__concept">Projeto conceito: médico e dados fictícios, criado como estudo de design para a área da saúde.</p>
-          <a class="btn btn--cream case__link" href="https://siteapresentacaodr.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live case__live--concept">Conceito</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--raf" aria-hidden="true">
-                  <div class="mnav"><span>Dr. Rafael Moretti</span><b class="pill">Agendar</b></div>
-                  <div class="mhero"><div class="msub">Ortopedista · Rio de Janeiro</div><div class="mh">Volte a se mover <span>sem medo</span> da dor.</div><div class="mbtn">Agendar avaliação</div><span class="arch"></span></div>
-                  <div class="msec"><div class="mt">Onde dói?</div><div class="body"><i></i><i></i><i></i><i></i></div></div>
-                  <div class="msec"><div class="mt">Do seu esporte</div><div class="mcards"><i></i><i></i><i></i></div></div>
-                  <div class="msec alt"><div class="mt">O que eu trato</div><div class="bar"></div><div class="bar s"></div><div class="bar xs"></div></div>
-                  <div class="mfoot">Projeto conceito · Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--raf" aria-hidden="true" style="animation-delay:-5s">
-                <div class="mnav"><span>R. Moretti</span><i></i></div>
-                <div class="mhero"><div class="msub">Ortopedista</div><div class="mh">Volte a se mover <span>sem medo</span>.</div><div class="mbtn">Agendar</div><span class="arch"></span></div>
-                <div class="msec"><div class="mt">Onde dói?</div><div class="body"><i></i><i></i><i></i><i></i></div></div>
-                <div class="msec alt"><div class="mt">Tratamentos</div><div class="bar"></div><div class="bar s"></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case rv">
-        <div class="case__info">
-          <p class="case__num">CASE 05 · SAÚDE · PROJETO CONCEITO</p>
-          <h3 class="case__title">Dra. Helena Vasconcelos</h3>
-          <p class="case__area">Dermatologia clínica e estética · São Paulo</p>
-          <ul class="case__list">
-            <li>As camadas da pele explicadas de um jeito simples</li>
-            <li>Cuidados por fase da vida: 20 e poucos, 30+, 40+ e 50+</li>
-            <li>Rotina de manhã e de noite, galeria do consultório e WhatsApp por procedimento</li>
-          </ul>
-          <p class="case__concept">Projeto conceito: médica e dados fictícios, criado como estudo de design para a área da saúde.</p>
-          <a class="btn btn--cream case__link" href="https://siteapresentacaodra.vercel.app/" target="_blank" rel="noopener">Ver site ao vivo <span class="arrow" aria-hidden="true">↗</span></a>
-        </div>
-        <div class="devices">
-          <div class="devices__inner">
-            <span class="case__live case__live--concept">Conceito</span>
-            <div class="laptop">
-              <div class="laptop__screen"><div class="laptop__view">
-                <div class="track mini mini--hel" aria-hidden="true">
-                  <div class="mnav"><span>Dra. Helena Vasconcelos</span><b class="pill">Agendar</b></div>
-                  <div class="mhero"><div class="msub">Dermatologia · São Paulo</div><div class="mh">Sua pele merece um <em>olhar sem pressa.</em></div><div class="mbtn">Agendar minha consulta</div><span class="arch"></span></div>
-                  <div class="msec"><div class="mt">Três camadas, um só cuidado.</div><div class="layers"><i></i><i></i><i></i></div></div>
-                  <div class="msec alt"><div class="mt">Cada idade, um cuidado.</div><div class="tabs"><i>20+</i><i>30+</i><i>40+</i><i>50+</i></div><div class="bar"></div><div class="bar s"></div></div>
-                  <div class="msec"><div class="mt">Um lugar para desacelerar.</div><div class="mgrid"><i></i><i></i><i></i><i></i></div></div>
-                  <div class="mfoot">Projeto conceito · Creative Romão</div>
-                </div>
-              </div></div>
-              <div class="laptop__base"></div>
-            </div>
-            <div class="mphone"><div class="mphone__view">
-              <div class="track mini mini--hel" aria-hidden="true" style="animation-delay:-2s">
-                <div class="mnav"><span>Dra. Helena</span><i></i></div>
-                <div class="mhero"><div class="msub">Dermatologia</div><div class="mh">Sua pele merece um <em>olhar sem pressa.</em></div><div class="mbtn">Agendar</div><span class="arch"></span></div>
-                <div class="msec"><div class="mt">Camadas</div><div class="layers"><i></i><i></i><i></i></div></div>
-                <div class="msec alt"><div class="mt">Fases</div><div class="tabs"><i>20+</i><i>30+</i></div></div>
-                <div class="mfoot">Creative Romão</div>
-              </div>
-            </div></div>
-          </div>
-        </div>
-      </article>
-      </div>
-      <div class="cases__nav" aria-hidden="true"><span class="cases__count" id="casesCount">1 / 5</span><span class="cases__bar"><i id="casesBar"></i></span><span class="cases__hint">Arraste para o lado →</span></div>
-
-      <div class="slots">
-        <div class="slot rv"><p class="slot__num">CASE 06</p><h3>Esse espaço pode ser o seu.</h3><p>O próximo site no ar pode ter o seu nome aqui. Saúde, direito, beleza, comércio ou serviços.</p><a data-wa="vaga" href="#" target="_blank" rel="noopener">Quero ser o próximo case <span class="arrow" aria-hidden="true">→</span></a></div>
       </div>
     </div>
   </section>
@@ -1610,33 +1395,37 @@ html.intro-on .vtravel{opacity:0}
 </script>
 
 <script>
-/* ====== VITRINE: troca de site, giro do celular e viagem do topo até a vitrine ====== */
+/* ====== PORTFÓLIO / VITRINE: troca de site, giro do celular, legenda no celular e viagem do topo ====== */
 (function(){
   "use strict";
-  var vit=document.getElementById("vitrine"); if(!vit) return;
-  var body=document.getElementById("vbody"), phone=document.getElementById("vphone"), travel=document.getElementById("vtravel");
+  var vit=document.getElementById("projetos"); if(!vit||!vit.classList.contains("vit")) return;
+  var body=document.getElementById("vbody"), phone=document.getElementById("vphone"), travel=document.getElementById("vtravel"), scr=document.getElementById("vscreen");
   var shots=[].slice.call(vit.querySelectorAll(".vshot")), steps=[].slice.call(vit.querySelectorAll("[data-step]"));
+  var capIn=vit.querySelector(".vcap__in"), capT=0;
   var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   var RY=[-16,15,-12,17,-14,-6], RX=[5,-4,6,-5,4,3];
   var turn=180, cur=null, swapT=0;
   function setTurn(){ body.style.setProperty("--turn",turn+"deg"); }
-  function showShot(i){ shots.forEach(function(s,k){ s.classList.toggle("on",k===i); }); }
-  var cap=document.getElementById("vcap"), capT=0;
+  function front(){ return ((turn%360)+360)%360===0; }
+  function showShot(i,el){
+    shots.forEach(function(s,k){ s.classList.toggle("on",k===i); });
+    if(el&&el.dataset.sb){ scr.style.setProperty("--sb",el.dataset.sb); scr.style.setProperty("--sbfg",el.dataset.sbfg); }
+  }
   function caption(el){
-    if(!cap||!el) return;
+    if(!capIn||!el) return;
     function fill(){
       var c=el.cloneNode(true);
-      c.querySelectorAll(".vstep__big").forEach(function(x){x.remove();});
+      c.querySelectorAll(".vstep__big,[aria-hidden=true]:not(span)").forEach(function(x){x.remove();});
       c.querySelectorAll("[id]").forEach(function(x){x.removeAttribute("id");});
-      cap.innerHTML='<div class="'+el.className.replace(/\bon\b/,"")+' on">'+c.innerHTML+"</div>";
-      var a=cap.querySelector("[data-wa]"), o=el.querySelector("[data-wa]"); if(a&&o) a.href=o.href;
-      cap.classList.remove("swap");
+      var h=c.querySelector("h2"); if(h){ var n=document.createElement("p"); n.className=h.className; n.innerHTML=h.innerHTML; n.setAttribute("role","heading"); n.setAttribute("aria-level","2"); h.replaceWith(n); }
+      capIn.innerHTML=c.innerHTML;
+      var a=capIn.querySelector("[data-wa]"), o=el.querySelector("[data-wa]"); if(a&&o) a.href=o.href;
+      capIn.classList.remove("swap");
     }
     clearTimeout(capT);
-    if(reduce||!cap.innerHTML){ fill(); return; }
-    cap.classList.add("swap"); capT=setTimeout(fill,240);
+    if(reduce||!capIn.innerHTML){ fill(); return; }
+    capIn.classList.add("swap"); capT=setTimeout(fill,230);
   }
-  function front(){ return ((turn%360)+360)%360===0; }
   function go(i){
     if(i===cur) return; cur=i;
     var el=steps.filter(function(s){return +s.dataset.step===i;})[0];
@@ -1644,33 +1433,53 @@ html.intro-on .vtravel{opacity:0}
     steps.forEach(function(s){ s.classList.toggle("on",+s.dataset.step===i); });
     caption(el);
     clearTimeout(swapT);
-    if(reduce){ turn=i<0?180:0; setTurn(); if(i>=0) showShot(i); return; }
+    if(reduce){ turn=i<0?180:0; setTurn(); if(i>=0) showShot(i,el); return; }
     phone.style.setProperty("--ry",(i<0?-22:RY[i])+"deg"); phone.style.setProperty("--rx",(i<0?8:RX[i])+"deg");
     if(i<0){ if(front()) turn+=180; setTurn(); return; }
-    if(front()){ turn+=360; swapT=setTimeout(function(){ showShot(i); },380); }
-    else { turn+=180; showShot(i); }
+    if(front()){ turn+=360; swapT=setTimeout(function(){ showShot(i,el); },380); }
+    else { turn+=180; showShot(i,el); }
     setTurn();
   }
-  if("IntersectionObserver" in window){
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) go(+e.target.dataset.step); }); },{rootMargin:"-50% 0px -50% 0px"});
-    steps.forEach(function(s){ io.observe(s); });
+  /* duas colunas: o texto de cada site fica preso no meio da tela; vale o que estiver mais perto do centro */
+  var dq=matchMedia("(min-width:900px), (min-aspect-ratio:1/1)"), ptick=false;
+  function pick(){
+    ptick=false; if(!dq.matches) return;
+    var r=vit.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return;
+    var y0=innerHeight/2+33, best=null, bd=1e9;
+    steps.forEach(function(s){ var t=s.querySelector(".vstep__in")||s, q=t.getBoundingClientRect(), d=Math.abs(q.top+q.height/2-y0); if(d<bd){bd=d;best=s;} });
+    if(best) go(+best.dataset.step);
   }
+  function preq(){ if(!ptick){ ptick=true; requestAnimationFrame(pick); } }
+  window.addEventListener("scroll",preq,{passive:true}); window.addEventListener("resize",preq);
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){ if(dq.matches) return; es.forEach(function(e){ if(e.isIntersecting) go(+e.target.dataset.step); }); },{rootMargin:"-50% 0px -50% 0px"});
+    steps.forEach(function(s){ io.observe(s); });
+    var pio=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ pio.disconnect(); shots.forEach(function(s){ if(s.tagName==="IMG") s.loading="eager"; }); } },{rootMargin:"800px 0px"});
+    pio.observe(vit);
+  } else { shots.forEach(function(s){ if(s.tagName==="IMG") s.loading="eager"; }); }
   go(-1);
-  /* pré-carrega as telas quando a vitrine chega perto */
-  if("IntersectionObserver" in window){ var pio=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ pio.disconnect(); shots.forEach(function(s){ if(s.tagName==="IMG") s.loading="eager"; }); } },{rootMargin:"600px 0px"}); pio.observe(vit); }
+  /* no computador o celular acompanha o mouse de leve */
+  if(!reduce&&matchMedia("(hover:hover) and (pointer:fine)").matches){
+    vit.addEventListener("pointermove",function(e){ phone.style.setProperty("--mx",((e.clientX/innerWidth-.5)*16).toFixed(2)+"deg"); phone.style.setProperty("--my",((.5-e.clientY/innerHeight)*10).toFixed(2)+"deg"); },{passive:true});
+    vit.addEventListener("pointerleave",function(){ phone.style.setProperty("--mx","0deg"); phone.style.setProperty("--my","0deg"); });
+  }
 
-  /* viagem: no computador o celular começa pousado na foto do topo e desce até a vitrine conforme a rolagem */
-  var slot=document.getElementById("hslot"), stage=vit.querySelector(".vit__stage"), wide=matchMedia("(min-width:900px)"), tick=false;
+  /* viagem: com o topo em duas colunas, o celular começa pousado na foto e desce até o portfólio conforme a rolagem */
+  var slot=document.getElementById("hslot"), stage=vit.querySelector(".vit__stage"), tick=false;
   function ease(t){ return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
   function place(){
     tick=false;
-    if(reduce||!wide.matches||!slot){ travel.style.transform=""; return; }
-    var D=vit.offsetTop; if(D<=0){ travel.style.transform=""; return; }
+    var sr=slot?slot.getBoundingClientRect():null;
+    if(reduce||!sr||!sr.width){ travel.style.transform=""; return; }
+    var D=vit.getBoundingClientRect().top+window.scrollY; if(D<=0){ travel.style.transform=""; return; }
     var t=Math.max(0,Math.min(1,window.scrollY/D));
     if(t>=1){ travel.style.transform=""; return; }
-    var e=ease(t), sr=slot.getBoundingClientRect(), st=stage.getBoundingClientRect();
-    var w=phone.offsetWidth, h=phone.offsetHeight;
-    var cx=st.left+st.width/2, cy=st.top+st.height/2;
+    var e=ease(t), st=stage.getBoundingClientRect(), pr=phone.getBoundingClientRect();
+    var w=phone.offsetWidth;
+    /* centro natural do aparelho = posição atual menos o deslocamento já aplicado */
+    var cur=travel.style.transform; travel.style.transform="";
+    var nr=phone.getBoundingClientRect(); travel.style.transform=cur;
+    var cx=nr.left+nr.width/2, cy=nr.top+nr.height/2;
     var s0=sr.width/w, s=s0+(1-s0)*e;
     var dx=(sr.left+sr.width/2-cx)*(1-e), dy=(sr.top+sr.height/2-cy)*(1-e);
     travel.style.transform="translate3d("+dx.toFixed(1)+"px,"+dy.toFixed(1)+"px,0) scale("+s.toFixed(4)+") rotate("+(-8*(1-e)).toFixed(2)+"deg)";
@@ -1679,7 +1488,6 @@ html.intro-on .vtravel{opacity:0}
   window.addEventListener("scroll",req,{passive:true});
   window.addEventListener("resize",req);
   window.addEventListener("load",req);
-  if(wide.addEventListener) wide.addEventListener("change",req);
   place();
 })();
 </script>
